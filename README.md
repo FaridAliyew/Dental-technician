@@ -1,1 +1,1 @@
-"# Dental technician" 
+Dental technician 
