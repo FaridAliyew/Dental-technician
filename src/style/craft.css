@@ -1,0 +1,167 @@
+#craft {
+  width: 100%;
+  padding: 90px 24px;
+  background-color: #faf9f4;
+}
+
+.craft-container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 70px;
+}
+
+.craft-image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(32, 55, 52, 0.1);
+}
+
+.craft-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.craft-image:hover img {
+  transform: scale(1.03);
+}
+
+.craft-content {
+  width: 100%;
+}
+
+.craft-label {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #162e2d;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}
+
+.craft-content h2 {
+  margin: 0 0 20px;
+  color: #092d2c;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.craft-description {
+  max-width: 570px;
+  margin: 0;
+  color: #526967;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.craft-features {
+  margin: 32px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  list-style: none;
+}
+
+.craft-features li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #203f3d;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.craft-check-icon {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #00676b;
+  color: #ffffff;
+  font-size: 10px;
+}
+
+
+@media (max-width: 900px) {
+  #craft {
+    padding: 70px 24px;
+  }
+
+  .craft-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    order: 1;
+  }
+
+  .craft-image {
+    max-width: 650px;
+    margin: 0 auto;
+    order: 2;
+  }
+
+  .craft-content {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .craft-content h2 br {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #craft {
+    padding: 55px 18px;
+  }
+
+  .craft-container {
+    gap: 36px;
+  }
+
+  .craft-image {
+    border-radius: 18px;
+  }
+
+  .craft-content h2 {
+    margin-bottom: 16px;
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .craft-description {
+    font-size: 15px;
+  }
+
+  .craft-features {
+    margin-top: 26px;
+    gap: 16px;
+  }
+
+  .craft-features li {
+    align-items: flex-start;
+    font-size: 14px;
+  }
+
+  .craft-check-icon {
+    margin-top: 1px;
+  }
+}
