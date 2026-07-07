@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import MasterDental from './components/MasterDental'
+import LaboServi from './components/LaboServi'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <Navbar />
       <MasterDental />
+      <LaboServi/>
     </>
   )
 }
