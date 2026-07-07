@@ -1,17 +1,14 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
-// import './App.css'
+import MasterDental from './components/MasterDental'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
+      <MasterDental />
     </>
   )
 }
