@@ -18,7 +18,7 @@ function Navbar() {
           <a href="#contact">Contact</a>
         </div>
 
-        <a href="#request" className="request-button">
+        <a href="#contact" className="request-button">
           Request a case
         </a>
 

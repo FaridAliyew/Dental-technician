@@ -7,6 +7,8 @@ import Works from './components/Works'
 import Clinician from './components/Clinician'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <Clinician />
       <Contact/>
       <Footer/>
+      <ScrollToTop/>
     </>
   )
 }

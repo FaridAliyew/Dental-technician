@@ -27,11 +27,11 @@ function MasterDental() {
                     </p>
 
                     <div className="master-actions">
-                        <a href="#request" className="primary-button">
+                        <a href="#contact" className="primary-button">
                             Send a case
                         </a>
 
-                        <a href="#services" className="secondary-button">
+                        <a href="#labo-servi" className="secondary-button">
                             View services
                         </a>
                     </div>
