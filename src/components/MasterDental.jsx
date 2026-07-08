@@ -1,55 +1,88 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style/master-dental.css";
 import img1 from "../imgs/master-dental.png";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 function MasterDental() {
+
+    const [hero, setHero] = useState(null);
+
+    useEffect(() => {
+
+        const getHero = async () => {
+
+            const docRef = doc(db, "website", "hero");
+
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+
+                setHero(docSnap.data());
+
+            } else {
+
+                console.log("Document tapılmadı");
+
+            }
+
+        };
+
+        getHero();
+
+    }, []);
+
+    if (!hero) {
+
+        return <h2 className="loading">Loading...</h2>;
+
+    }
+
     return (
         <section id="master-dental">
             <div className="master-dental-container">
                 <div className="master-dental-content">
                     <div className="master-dental-badge">
                         <span className="badge-dot"></span>
-                        Master dental technician
+                        {hero.badge}
                     </div>
 
                     <h1>
-                        Restorations
+                        {hero.title1}
                         <br />
-                        crafted with
+                        {hero.title2}
                         <br />
-                        <span>precision &amp; artistry</span>
+                        <span>{hero.title3}</span>
                     </h1>
 
                     <p className="master-description">
-                        Handcrafted crowns, veneers, bridges and full arch prosthetics
-                        for dental practices — where CAD/CAM accuracy meets a ceramist&apos;s
-                        eye for natural esthetics.
+                        {hero.description}
                     </p>
 
                     <div className="master-actions">
                         <a href="#contact" className="primary-button">
-                            Send a case
+                            {hero.primaryButton}
                         </a>
 
                         <a href="#labo-servi" className="secondary-button">
-                            View services
+                            {hero.secondaryButton}
                         </a>
                     </div>
 
                     <div className="master-stats">
                         <div className="stat-item">
-                            <strong>18+</strong>
-                            <span>Years at the bench</span>
+                            <strong>{hero.number1}+</strong>
+                            <span>{hero.title4}</span>
                         </div>
 
                         <div className="stat-item">
-                            <strong>40k+</strong>
-                            <span>Units delivered</span>
+                            <strong>{hero.number2}k+</strong>
+                            <span>{hero.title5}</span>
                         </div>
 
                         <div className="stat-item">
-                            <strong>48h</strong>
-                            <span>Typical turnaround</span>
+                            <strong>{hero.number3}h</strong>
+                            <span>{hero.title6}</span>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-console.log("Firebase qoşuldu:", app);
+// console.log("Firebase qoşuldu:", app);
 
 export const db = getFirestore(app);
 
