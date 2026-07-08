@@ -12,9 +12,9 @@ function Navbar() {
         </a>
 
         <div className="nav-items">
-          <a href="#services">Services</a>
+          <a href="#labo-servi">Services</a>
           <a href="#craft">Craft</a>
-          <a href="#process">Process</a>
+          <a href="#works">Process</a>
           <a href="#contact">Contact</a>
         </div>
 

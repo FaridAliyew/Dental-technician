@@ -1,0 +1,122 @@
+#works {
+  width: 100%;
+  padding: 100px 24px;
+  background-color: #076567;
+
+  .works-container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+
+    .works-heading {
+      margin-bottom: 48px;
+
+      span {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: #b9d9d7;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        color: #ffffff;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(36px, 4vw, 48px);
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+      }
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 32px;
+
+      .work-step {
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+
+        .work-number {
+          display: block;
+          margin-bottom: 16px;
+          color: rgba(206, 230, 226, 0.65);
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 34px;
+          font-weight: 500;
+          line-height: 1;
+        }
+
+        h3 {
+          margin: 0 0 12px;
+          color: #ffffff;
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.3;
+        }
+
+        p {
+          margin: 0;
+          color: #c7dcda;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.65;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    padding: 80px 24px;
+
+    .works-container {
+      .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px 30px;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 65px 18px;
+
+    .works-container {
+      .works-heading {
+        margin-bottom: 38px;
+
+        h2 {
+          font-size: 34px;
+          line-height: 1.15;
+        }
+      }
+
+      .works-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+        .work-step {
+          padding-top: 20px;
+
+          .work-number {
+            font-size: 30px;
+          }
+
+          h3 {
+            font-size: 18px;
+          }
+
+          p {
+            max-width: 500px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -63,7 +63,8 @@
   align-items: center;
   gap: 34px;
   justify-self: center;
-  a{
+
+  a {
     font-size: 20px;
   }
 }
@@ -109,10 +110,19 @@ body {
   padding-top: 66px;
 }
 
+@media (max-width: 1160px) {
+  .navbar-container {
+    width: calc(100% - 40px);
+  }
+}
+
 @media (max-width: 768px) {
   .navbar-container {
+    width: calc(100% - 30px);
+
     display: flex;
     justify-content: space-between;
+    gap: 16px;
   }
 
   .nav-items {

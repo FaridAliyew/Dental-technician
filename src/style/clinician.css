@@ -1,0 +1,142 @@
+#clinician {
+    width: 100%;
+    padding: 95px 24px;
+    background-color: #faf9f4;
+
+    .clinician-container {
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+
+        .clinician-heading {
+            margin-bottom: 48px;
+
+            >span {
+                display: inline-block;
+                margin-bottom: 18px;
+                color: #123433;
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 1.7px;
+                text-transform: uppercase;
+            }
+
+            h2 {
+                margin: 0;
+                color: #082d2c;
+                font-family: Georgia, "Times New Roman", serif;
+                font-size: clamp(36px, 4vw, 46px);
+                font-weight: 500;
+                line-height: 1.1;
+                letter-spacing: -1.5px;
+            }
+        }
+
+        .clinician-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+
+            .clinician-card {
+                min-height: 200px;
+                padding: 27px 24px 24px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border: 1px solid #d8d8d1;
+                border-radius: 15px;
+                background-color: rgba(255, 255, 255, 0.65);
+                transition:
+                    transform 0.25s ease,
+                    border-color 0.25s ease,
+                    box-shadow 0.25s ease;
+
+                &:hover {
+                    transform: translateY(-5px);
+                    border-color: #99b7b4;
+                    box-shadow: 0 15px 35px rgba(8, 65, 63, 0.08);
+                }
+                cursor: pointer;
+
+                .testimonial-text {
+                    margin: 0;
+                    padding-bottom: 26px;
+                    color: #193f3d;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    line-height: 1.65;
+                }
+
+                .testimonial-author {
+                    padding-top: 19px;
+                    border-top: 1px solid #dadad4;
+
+                    h3 {
+                        margin: 0 0 5px;
+                        color: #092f2e;
+                        font-family: Arial, sans-serif;
+                        font-size: 16px;
+                        font-weight: 500;
+                        font-style: italic;
+                    }
+
+                    span {
+                        color: #687b79;
+                        font-family: Arial, sans-serif;
+                        font-size: 11px;
+                        font-weight: 500;
+                        letter-spacing: 0.7px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 900px) {
+        padding: 75px 24px;
+
+        .clinician-container {
+            .clinician-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+
+                .clinician-card:last-child {
+                    grid-column: 1 / -1;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        padding: 60px 18px;
+
+        .clinician-container {
+            .clinician-heading {
+                margin-bottom: 34px;
+
+                h2 {
+                    font-size: 34px;
+                }
+            }
+
+            .clinician-cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+
+                .clinician-card {
+                    min-height: 190px;
+                    padding: 23px 20px;
+
+                    &:last-child {
+                        grid-column: auto;
+                    }
+
+                    .testimonial-text {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
