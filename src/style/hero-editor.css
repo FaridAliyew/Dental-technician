@@ -1,0 +1,53 @@
+.hero-editor {
+    max-width: 900px;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.08);
+    margin: 0 auto;
+}
+
+.hero-editor h2 {
+    margin-bottom: 30px;
+    color: #0d2f2e;
+}
+
+.hero-editor input,
+.hero-editor textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border: 1px solid #d7dce1;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    transition: .25s;
+    resize: vertical;
+}
+
+.hero-editor input:focus,
+.hero-editor textarea:focus {
+    border-color: #0b5f5c;
+    box-shadow: 0 0 0 4px rgba(11,95,92,.12);
+}
+
+.hero-editor button {
+    background: #0b5f5c;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .25s;
+}
+
+.hero-editor button:hover {
+    background: #084947;
+    transform: translateY(-2px);
+}
+
+.hero-editor p {
+    margin-top: 18px;
+    color: green;
+}

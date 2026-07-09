@@ -28,8 +28,7 @@ function LaboServi() {
         return <p className="loading-ser">Loading...</p>;
     }
 
-    console.log(servicesData.services);
-
+    
     return (
         <section id="labo-servi">
             <div className="labo-servi-container">

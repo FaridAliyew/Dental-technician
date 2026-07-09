@@ -1,0 +1,79 @@
+.services-editor {
+    max-width: 900px;
+    margin: auto;
+}
+
+.services-editor h2 {
+    margin-bottom: 20px;
+    color: #123f3c; 
+}
+
+.service-heading{
+    margin-top:40px;
+}
+
+.editor-card{
+    background:#fff;
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.editor-card h3{
+    margin-bottom:20px;
+    color:#0b5f5c;
+}
+
+.editor-card label{
+    display:block;
+    margin-bottom:8px;
+    margin-top:18px;
+    font-weight:600;
+}
+
+.editor-card input,
+.editor-card textarea{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #d8d8d8;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+    resize:vertical;
+}
+
+.editor-card input:focus,
+.editor-card textarea:focus{
+    border-color:#0b5f5c;
+    box-shadow:0 0 0 4px rgba(11,95,92,.12);
+}
+
+.save-btn{
+    margin-top:20px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#0b5f5c;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn:hover{
+    background:#084947;
+}
+
+.save-btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+}
+
+@media(max-width:768px){
+    .editor-card{
+        padding:20px;
+    }
+}

@@ -1,29 +1,47 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import MasterDental from './components/MasterDental'
-import LaboServi from './components/LaboServi'
-import Craft from './components/Craft'
-import Works from './components/Works'
-import Clinician from './components/Clinician'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import GuestRoute from "./routes/GuestRoute";
+
 
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <MasterDental />
-      <LaboServi />
-      <Craft />
-      <Works />
-      <Clinician />
-      <Contact/>
-      <Footer/>
-      <ScrollToTop/>
-    </>
-  )
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+
+          <Route
+            path="/"
+            element={<Home />}
+          />
+
+          <Route
+            path="/login"
+            element={
+              <GuestRoute>
+                <Login />
+              </GuestRoute>
+            }
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+
+  );
 }
 
-export default App
+export default App;
