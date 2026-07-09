@@ -1,3 +1,8 @@
+.loading-works {
+  text-align: center;
+  font-size: 1.5em;
+}
+
 #works {
   width: 100%;
   padding: 100px 24px;

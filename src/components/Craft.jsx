@@ -1,53 +1,78 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+
 import "../style/craft.css";
 import craftImage from "../imgs/craft.jpg";
 
-const craftFeatures = [
-  "Custom shade matching under corrected daylight",
-  "Micro-layered ceramics for natural depth and translucency",
-  "Marginal fit verified under magnification",
-  "Materials from certified, biocompatible sources",
-];
-
 function Craft() {
+  const [craftData, setCraftData] = useState(null);
+
+  useEffect(() => {
+    async function fetchCraft() {
+      try {
+        const docRef = doc(db, "website", "craft");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setCraftData(docSnap.data());
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchCraft();
+  }, []);
+
+  if (!craftData) {
+    return <p className="loading-craft">Loading...</p>;
+  }
+
+  const featureList = Object.values(craftData.features[0]);
+
   return (
     <section id="craft">
       <div className="craft-container">
+
         <div className="craft-image">
           <img
             src={craftImage}
-            alt="Handcrafted ceramic dental restorations"
+            alt={craftData.titleLine1}
           />
         </div>
 
         <div className="craft-content">
-          <span className="craft-label">The craft</span>
+
+          <span className="craft-label">
+            {craftData.sectionLabel}
+          </span>
 
           <h2>
-            Every unit finished
+            {craftData.titleLine1}
             <br />
-            by a ceramist&apos;s hand
+            {craftData.titleLine2}
           </h2>
 
           <p className="craft-description">
-            Digital tools give us accuracy — but the final esthetics come from
-            experience. Each restoration is characterized, glazed and polished
-            individually so it disappears into the patient&apos;s natural smile.
+            {craftData.description}
           </p>
 
           <ul className="craft-features">
-            {craftFeatures.map((feature) => (
-              <li key={feature}>
+            {featureList.map((feature, index) => (
+              <li key={index}>
                 <span className="craft-check-icon">
-                  <FaCheck aria-hidden="true" />
+                  <FaCheck />
                 </span>
 
                 <span>{feature}</span>
               </li>
             ))}
           </ul>
+
         </div>
+
       </div>
     </section>
   );

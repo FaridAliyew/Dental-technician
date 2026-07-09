@@ -1,41 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+
 import "../style/clinician.css";
 
-const testimonials = [
-  {
-    quote:
-      "The esthetics are consistently outstanding — anterior cases come back looking completely natural. My patients notice the difference.",
-    name: "Dr. Elena Marsh",
-    profession: "Cosmetic Dentist",
-  },
-  {
-    quote:
-      "Reliable turnaround and a marginal fit I rarely have to adjust chairside. Aurelia has become our only lab.",
-    name: "Dr. James Okafor",
-    profession: "Prosthodontist",
-  },
-  {
-    quote:
-      "Their communication on complex implant cases is excellent. It feels like having a technician in the practice.",
-    name: "Dr. Priya Nair",
-    profession: "Implant Surgeon",
-  },
-];
-
 function Clinician() {
+  const [clinicianData, setClinicianData] = useState(null);
+
+  useEffect(() => {
+    async function fetchClinician() {
+      try {
+        const docRef = doc(db, "website", "clinician");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setClinicianData(docSnap.data());
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchClinician();
+  }, []);
+
+  if (!clinicianData) {
+    return <p className="loading-clinician">Loading...</p>;
+  }
+
   return (
     <section id="clinician">
       <div className="clinician-container">
+
         <div className="clinician-heading">
-          <span>Trusted by clinicians</span>
-          <h2>What dentists say</h2>
+          <span>{clinicianData.sectionLabel}</span>
+
+          <h2>{clinicianData.title}</h2>
         </div>
 
         <div className="clinician-cards">
-          {testimonials.map((testimonial) => (
+          {clinicianData.testimonials.map((testimonial, index) => (
             <article
               className="clinician-card"
-              key={testimonial.name}
+              key={index}
             >
               <p className="testimonial-text">
                 “{testimonial.quote}”
@@ -43,11 +50,13 @@ function Clinician() {
 
               <div className="testimonial-author">
                 <h3>{testimonial.name}</h3>
+
                 <span>{testimonial.profession}</span>
               </div>
             </article>
           ))}
         </div>
+
       </div>
     </section>
   );

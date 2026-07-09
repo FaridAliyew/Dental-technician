@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     addDoc,
     collection,
+    doc,
+    getDoc,
     serverTimestamp,
 } from "firebase/firestore";
 
@@ -17,13 +19,33 @@ const initialFormData = {
 };
 
 function Contact() {
+    const [contactData, setContactData] = useState(null);
+
     const [formData, setFormData] = useState(initialFormData);
+
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [submitStatus, setSubmitStatus] = useState({
         type: "",
         message: "",
     });
+
+    useEffect(() => {
+        async function fetchContact() {
+            try {
+                const docRef = doc(db, "website", "contact");
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    setContactData(docSnap.data());
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchContact();
+    }, []);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -61,61 +83,74 @@ function Contact() {
                 message: "Sorğunuz uğurla göndərildi.",
             });
         } catch (error) {
-            console.error("Sorğu göndərilərkən xəta yarandı:", error);
+            console.error(error);
 
             setSubmitStatus({
                 type: "error",
-                message: "Sorğunu göndərmək mümkün olmadı. Yenidən cəhd edin.",
+                message: "Sorğunu göndərmək mümkün olmadı.",
             });
         } finally {
             setIsSubmitting(false);
         }
     };
 
+    if (!contactData) {
+        return <p className="loading-ser">Loading...</p>;
+    }
+
     return (
         <section id="contact">
             <div className="contact-container">
-                <div className="contact-content">
-                    <span className="contact-label">Get in touch</span>
 
-                    <h2>Ready to send us a case?</h2>
+                <div className="contact-content">
+
+                    <span className="contact-label">
+                        {contactData.contactLabel}
+                    </span>
+
+                    <h2>{contactData.title}</h2>
 
                     <p className="contact-description">
-                        New practices are welcome. Reach out for pricing, pickup
-                        arrangements or to discuss a specific restoration.
+                        {contactData.description}
                     </p>
 
                     <address className="contact-details">
+
                         <div className="contact-detail">
                             <span>Email</span>
 
-                            <a href="mailto:cases@aureliadentallab.com">
-                                cases@aureliadentallab.com
+                            <a href={`mailto:${contactData.email}`}>
+                                {contactData.email}
                             </a>
                         </div>
 
                         <div className="contact-detail">
                             <span>Phone</span>
 
-                            <a href="tel:+15551234567">
-                                +1 (555) 123-4567
+                            <a href={`tel:${contactData.phone}`}>
+                                {contactData.phone}
                             </a>
                         </div>
 
                         <div className="contact-detail">
                             <span>Laboratory</span>
 
-                            <p>
-                                24 Meridian Works, Suite 3
-                                <br />
-                                Portland, OR 97204
+                            <p
+                                style={{
+                                    whiteSpace: "pre-line",
+                                }}
+                            >
+                                {contactData.laboratory}
                             </p>
                         </div>
+
                     </address>
+
                 </div>
 
                 <form className="contact-form" onSubmit={handleSubmit}>
                     <div className="form-grid">
+
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
 
@@ -176,7 +211,9 @@ function Contact() {
                         </div>
 
                         <div className="form-group full-width">
-                            <label htmlFor="case-details">Case details</label>
+                            <label htmlFor="case-details">
+                                Case details
+                            </label>
 
                             <textarea
                                 id="case-details"
@@ -190,6 +227,7 @@ function Contact() {
                                 required
                             />
                         </div>
+
                     </div>
 
                     {submitStatus.message && (
@@ -201,10 +239,17 @@ function Contact() {
                         </p>
                     )}
 
-                    <button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "Submitting..." : "Submit inquiry"}
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting
+                            ? "Submitting..."
+                            : "Submit inquiry"}
                     </button>
+
                 </form>
+
             </div>
         </section>
     );
