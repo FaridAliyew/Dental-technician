@@ -1,0 +1,82 @@
+.dashboard-section {
+    width: 100%;
+}
+
+.dashboard-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card h2 {
+    margin-bottom: 28px;
+    color: #0d4f52;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.dashboard-card input,
+.dashboard-card textarea {
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #fafafa;
+    transition: .25s;
+}
+
+.dashboard-card input:hover,
+.dashboard-card textarea:hover {
+    border-color: #0d6b6b;
+}
+
+.dashboard-card input:focus,
+.dashboard-card textarea:focus {
+    outline: none;
+    border-color: #0d6b6b;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(13, 107, 107, 0.12);
+}
+
+.dashboard-card textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.dashboard-card input[readonly],
+.dashboard-card textarea[readonly] {
+    cursor: default;
+    color: #555;
+}
+
+@media (max-width: 992px) {
+    .dashboard-card {
+        padding: 28px;
+    }
+
+    .dashboard-card h2 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-card {
+        padding: 22px;
+    }
+
+    .dashboard-card h2 {
+        font-size: 22px;
+    }
+
+    .dashboard-card input,
+    .dashboard-card textarea {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+}

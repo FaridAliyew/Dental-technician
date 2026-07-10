@@ -11,19 +11,13 @@ function MasterDental() {
     useEffect(() => {
 
         const getHero = async () => {
-
             const docRef = doc(db, "website", "hero");
-
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-
                 setHero(docSnap.data());
-
             } else {
-
                 console.log("Document tapılmadı");
-
             }
 
         };
