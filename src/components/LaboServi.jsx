@@ -25,7 +25,7 @@ function LaboServi() {
     }, []);
 
     if (!servicesData) {
-        return <p className="loading-ser">Loading...</p>;
+        return null;
     }
 
     

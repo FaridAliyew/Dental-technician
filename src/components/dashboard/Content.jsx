@@ -4,6 +4,8 @@ import ServicesEditor from "./ServicesEditor";
 import CraftEditor from "./CraftEditor";
 import WorksEditor from "./WorksEditor";
 import CliniciansEditor from "./CliniciansEditor";
+import ContactEditor from "./ContactEditor";
+import FooterEditor from "./FooterEditor";
 
 function Content({ selected }) {
 
@@ -21,6 +23,12 @@ function Content({ selected }) {
     }
     if (selected === "Reviews") {
         return <CliniciansEditor /> ;
+    }
+    if (selected === "Contact") {
+        return <ContactEditor /> ;
+    }
+    if (selected === "Footer") {
+        return <FooterEditor /> ;
     }
 
     return (

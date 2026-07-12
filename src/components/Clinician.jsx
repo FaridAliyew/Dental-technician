@@ -25,7 +25,7 @@ function Clinician() {
   }, []);
 
   if (!clinicianData) {
-    return <p className="loading-clinician">Loading...</p>;
+    return null;
   }
 
   return (

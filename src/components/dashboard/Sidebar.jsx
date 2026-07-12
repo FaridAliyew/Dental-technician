@@ -4,7 +4,6 @@ function Sidebar({ selected, setSelected }) {
 
 
     const menus = [
-        "Dashboard",
         "Hero",
         "Services",
         "Craft",

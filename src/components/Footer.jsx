@@ -27,7 +27,7 @@ function Footer() {
     }, []);
 
     if (!footerData) {
-        return <p className="loading-ser">Loading...</p>;
+        return null;
     }
 
     return (

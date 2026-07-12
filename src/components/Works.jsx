@@ -25,7 +25,7 @@ function Works() {
     }, []);
 
     if (!worksData) {
-        return <p className="loading-works">Loading...</p>;
+        return null;
     }
 
     return (

@@ -8,8 +8,17 @@ import Clinician from '../components/Clinician'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+import { useWebsite } from "../context/WebsiteContext";
+import Loading from "../components/Loading";
 
 function Home() {
+
+    const { loading } = useWebsite();
+
+    if (loading) {
+        return <Loading />;
+    }
+
     return (
         <>
             <Navbar />
@@ -20,6 +29,7 @@ function Home() {
             <Clinician />
             <Contact />
             <Footer />
+            <ScrollToTop />
         </>
     )
 }

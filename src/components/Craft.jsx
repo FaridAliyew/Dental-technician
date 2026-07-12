@@ -27,7 +27,7 @@ function Craft() {
   }, []);
 
   if (!craftData) {
-    return <p className="loading-craft">Loading...</p>;
+    return null;
   }
 
   const featureList = Object.values(craftData.features[0]);

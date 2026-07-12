@@ -28,7 +28,7 @@ function MasterDental() {
 
     if (!hero) {
 
-        return <h2 className="loading">Loading...</h2>;
+        return null;
 
     }
 
